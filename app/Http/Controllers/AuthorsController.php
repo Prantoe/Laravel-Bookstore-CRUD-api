@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAuthorRequest;
-use App\Http\Requests\UpdateAuthorRequest;
-use App\Models\Author;
-use App\Http\Resources\AuthorsResource;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
+use App\Models\Author;
+use Illuminate\Http\Request;
+use App\Http\Resources\AuthorsResource;
+use App\Http\Requests\AuthorsRequest;
 
 
 class AuthorsController extends Controller
@@ -39,7 +37,7 @@ class AuthorsController extends Controller
      * @param  \App\Http\Requests\StoreAuthorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorsRequest $request)
     {
         $fucker = \Faker\Factory::create();
         $author = Author::create([
@@ -78,7 +76,7 @@ class AuthorsController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(AuthorsRequest $request, Author $author)
     {
         
         $author->update([
