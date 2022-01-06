@@ -34,7 +34,7 @@ class BookAuthorController extends Controller
      * @param  \App\Http\Requests\StoreBookAuthorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBookAuthorRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -74,7 +74,7 @@ class BookAuthorController extends Controller
             'book_id' => $request->input('book_id')
         ]);
 
-        return new BookAuthorResource($book);
+        return new BookAuthorResource($bookAuthor);
     }
 
     /**
