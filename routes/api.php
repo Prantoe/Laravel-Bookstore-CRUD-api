@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Request\AuthorsRequest;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BookAuthorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,6 +36,8 @@ Route::middleware('auth:api')->prefix('v1')->group(function(){
     Route::apiResource('/authors', AuthorsController::class);
 
     Route::apiResource('/books', BooksController::class);
+
+    Route::apiResource('/BookAuthor', BookAuthorController::class);
 });
 
 //author/{author}

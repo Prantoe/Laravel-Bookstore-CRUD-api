@@ -15,7 +15,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-         return BooksResource::collection(Book::all());
+        return BooksResource::collection(Book::all());
     }
 
     /**
@@ -78,7 +78,7 @@ class BooksController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-         $book->update([
+        $book->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'publication_year' => $request->input('publication_year')

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBookAuthorRequest;
-use App\Http\Requests\UpdateBookAuthorRequest;
 use App\Models\BookAuthor;
+use Illuminate\Http\Request;
+use App\Http\Resources\BookAuthorResource;
 
 class BookAuthorController extends Controller
 {
@@ -15,7 +15,7 @@ class BookAuthorController extends Controller
      */
     public function index()
     {
-        //
+        return BookAuthorResource::collection(BookAuthor::all());
     }
 
     /**
@@ -47,7 +47,7 @@ class BookAuthorController extends Controller
      */
     public function show(BookAuthor $bookAuthor)
     {
-        //
+    return new BookAuthorResource($bookAuthor);
     }
 
     /**
@@ -68,9 +68,13 @@ class BookAuthorController extends Controller
      * @param  \App\Models\BookAuthor  $bookAuthor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBookAuthorRequest $request, BookAuthor $bookAuthor)
+    public function update(Request $request, BookAuthor $bookAuthor)
     {
-        //
+          $bookAuthor->update([
+            'book_id' => $request->input('book_id')
+        ]);
+
+        return new BookAuthorResource($book);
     }
 
     /**
@@ -81,6 +85,7 @@ class BookAuthorController extends Controller
      */
     public function destroy(BookAuthor $bookAuthor)
     {
-        //
+          $bookAuthor->delete();
+        return response(null, 204);
     }
 }
